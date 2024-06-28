@@ -2,7 +2,7 @@ import React from 'react'
 import DeleteIcon from "@mui/icons-material/Delete";
 
 
-const Contents = ({ items, setItems, handleCheck }) => {
+const Contents = ({ items, setItems, handleCheck, handleDelete }) => {
   return (
     <main className='contents'>
       <ul>
@@ -15,10 +15,17 @@ const Contents = ({ items, setItems, handleCheck }) => {
                 onChange={()=> handleCheck(item.id)}
                 
             />
-            <label>
+              <label
+                style={(item.checked) ? { textDecoration:'line-through'} : null}
+                onDoubleClick={()=> handleCheck(item.id)}
+              >
               {item.item}
             </label>
-            <DeleteIcon/>
+              <DeleteIcon
+                role='button'
+                tabIndex='0'
+                onClick={()=> handleDelete(item.id)}
+              />
             </li>
             </div>
         ))}
