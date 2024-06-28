@@ -2,7 +2,7 @@ import React from 'react'
 import DeleteIcon from "@mui/icons-material/Delete";
 
 
-const Contents = ({ items, setItems }) => {
+const Contents = ({ items, setItems, handleCheck }) => {
   return (
     <main className='contents'>
       <ul>
@@ -10,7 +10,10 @@ const Contents = ({ items, setItems }) => {
           <div >
           <li className = "itemLists" key={item.id}>
               <input style ={{height:'40px', width: '40px'}}
-                type= "checkbox"
+                type="checkbox"
+                tabIndex='0'
+                onChange={()=> handleCheck(item.id)}
+                
             />
             <label>
               {item.item}
